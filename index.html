@@ -25,7 +25,7 @@
     </style>
 
     <script>
-        var map = L.map('map').setView([35.731447, 139.709856], 15);
+        var map = L.map('map').setView([35.731447, 139.709856], 16);
 
         mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -107,7 +107,7 @@
                     .attr({
                         'opacity': .7,
                         'fill': 'red',
-                        'r': 8
+                        'r': 12
                     })
                     .on('click', function(d) {
                         div.transition().duration(200)
