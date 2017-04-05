@@ -25,7 +25,8 @@
     </style>
 
     <script>
-        var map = L.map('map').setView([35.731447, 139.709856], 16);
+        //var map = L.map('map').setView([35.731447, 139.709856], 16);
+        var map = L.map('map').setView([36.731447, 119.709856], 16);
 
         mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -123,16 +124,34 @@
 
                 function update() {
                     circle.attr('transform', function(d) {
-                        //console.log(d.LatLngObj);
                         return 'translate(' +
                             map.latLngToLayerPoint(d.LatLngObj).x + ',' +
                             map.latLngToLayerPoint(d.LatLngObj).y + ')';
                     });
-                }
+                };
+
 
             });
         });
+
+        function setCenter() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        var data = position.coords;
+
+                        var lat = data.latitude;
+                        var lng = data.longitude;
+
+                        map.panTo([lat, lng]);
+                    });
+            } else {
+                alert("あなたの端末では、現在位置を取得できません。");
+            };
+        };
     </script>
+    <input type="button" value="現在地" onclick="setCenter();" /><br />
+
 </body>
 
 </html>
