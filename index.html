@@ -27,8 +27,8 @@
     <script>
         var map = L.map('map').setView([35.731447, 139.709856], 16);
 
-        mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
-        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        mapLink = '<a href="https://openstreetmap.org">OpenStreetMap</a>';
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; ' + mapLink + 'Contributors ',
             maxZoom: 19,
         }).addTo(map);
