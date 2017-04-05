@@ -98,17 +98,17 @@
                     .attr({
                         'opacity': .7,
                         'fill': 'red',
-                        'r': 30
+                        'r': 15
                 })
-                .on('mouseover', function(d) {
+                .on('click', function(d) {
                     div.transition().duration(200)
                         .style('opacity', .9);
                     div.html('<b>' + d.name + '公園: </b>' + d.address);
-                })
-                .on('mouseout', function(d) {
+                });
+                /*.on('mouseout', function(d) {
                     div.transition().duration(500)
                         .style('opacity', 0);
-                });
+                });*/
 
 
                 map.on('viewreset', update);
