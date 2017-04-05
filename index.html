@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@0.7/dist/leaflet.css" /> 
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@0.7/dist/leaflet.css" />
 </head>
 
- 
+
 <body>
     <h2> SAMPLE</h2>
     <div id="map"></div>
@@ -15,20 +16,22 @@
 
     <script src="https://unpkg.com/leaflet@0.7/dist/leaflet.js"></script>
 
- 
+
     <style>
         #map {
-        width: 100%;
-        height: 80vh;
+            width: 100%;
+            height: 80vh;
         }
     </style>
 
     <script>
-
-        var map = L.map('map').setView([35.731447, 139.709856], 14);
+        var map = L.map('map').setView([35.731447, 139.709856], 15);
 
         mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
-        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; ' + mapLink + 'Contributors ', maxZoom: 19, }).addTo(map);
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; ' + mapLink + 'Contributors ',
+            maxZoom: 19,
+        }).addTo(map);
 
         var svg = d3.select(map.getPanes().overlayPane).append('svg'),
             g = svg.append('g').attr('class', 'leaflet-zoom-hide');
@@ -36,7 +39,7 @@
         var div = d3.select('body').append('div')
             .attr('class', 'tooltip')
             .style('opacity', 0);
-        
+
         d3.json('tOutline.json', function(error, collection) {
             if (error) throw error;
 
@@ -44,91 +47,92 @@
                 if (error) throw error;
 
 
-            //console.log(collection);
-            
-            var transform = d3.geo.transform({point: projectPoint}),
-            path = d3.geo.path().projection(transform);
+                //console.log(collection);
 
-            var feature = g.selectAll('path')
-                .data(collection.features)
-                .enter().append('path');
-                //.attr('id', 'map_path');
+                var transform = d3.geo.transform({
+                        point: projectPoint
+                    }),
+                    path = d3.geo.path().projection(transform);
+
+                var feature = g.selectAll('path')
+                    .data(collection.features)
+                    .enter().append('path');
 
 
-            map.on('viewreset', reset);
-            reset();
+                map.on('viewreset', reset);
+                reset();
 
-            function reset() {
+                function reset() {
 
-            bounds = path.bounds(collection);
-            var topLeft = bounds[0],
-            bottomRight = bounds[1];
+                    bounds = path.bounds(collection);
+                    var topLeft = bounds[0],
+                        bottomRight = bounds[1];
 
-            svg.attr('width', bottomRight[0] - topLeft[0])
-                .attr('height', bottomRight[1] - topLeft[1])
-                .style('left', topLeft[0] + "px")
-                .style('top', topLeft[1] + "px");
-            
-            g.attr('transform', 'translate(' + -topLeft[0] + "," + -topLeft[1] + ')');
+                    svg.attr('width', bottomRight[0] - topLeft[0])
+                        .attr('height', bottomRight[1] - topLeft[1])
+                        .style('left', topLeft[0] + "px")
+                        .style('top', topLeft[1] + "px");
 
-            feature.attr('d', path)
-                .style('stroke', 'steelblue')
-                .style('stroke-width', '0.5px')
-                .style('fill-opacity', .15)
-                .style('fill', 'steelblue');
+                    g.attr('transform', 'translate(' + -topLeft[0] + "," + -topLeft[1] + ')');
 
-            }
+                    feature.attr('d', path)
+                        .style('stroke', 'steelblue')
+                        .style('stroke-width', '0.5px')
+                        .style('fill-opacity', .15)
+                        .style('fill', 'steelblue')
+                        .on('click', function(d) {
+                            div.transition().duration(500)
+                                .style('opacity', 0);
+                        });
 
-            function projectPoint(x, y) {
-                var point = map.latLngToLayerPoint(new L.LatLng(y, x));
-                this.stream.point(point.x, point.y);
+
+                }
+
+                function projectPoint(x, y) {
+                    var point = map.latLngToLayerPoint(new L.LatLng(y, x));
+                    this.stream.point(point.x, point.y);
                 }
 
 
-            point.forEach(function(d){
-                d.Lat=+d.Lat,
-                d.Lng=+d.Lng;
-                d.LatLngObj = new L.LatLng(d.Lat, d.Lng);
-            });
+                point.forEach(function(d) {
+                    d.Lat = +d.Lat,
+                        d.Lng = +d.Lng;
+                    d.LatLngObj = new L.LatLng(d.Lat, d.Lng);
+                });
 
-            var circle = g.selectAll('circle')
-               .data(point)
-                .enter()
-                .append('circle')
+                var circle = g.selectAll('circle')
+                    .data(point)
+                    .enter()
+                    .append('circle')
                     .attr({
                         'opacity': .7,
                         'fill': 'red',
-                        'r': 15
-                })
-                .on('click', function(d) {
-                    div.transition().duration(200)
-                        .style('opacity', .9);
-                    div.html('<b>' + d.name + '公園: </b>' + d.address);
-                });
-                /*.on('mouseout', function(d) {
-                    div.transition().duration(500)
-                        .style('opacity', 0);
-                });*/
+                        'r': 8
+                    })
+                    .on('click', function(d) {
+                        div.transition().duration(200)
+                            .style('opacity', .9);
+                        div.html('<b>' + d.name + '公園: </b>' + d.address);
+                    });
 
 
                 map.on('viewreset', update);
- 
+
                 update();
- 
- 
+
+
                 function update() {
                     circle.attr('transform', function(d) {
-                    //console.log(d.LatLngObj);
-                    return 'translate('+ 
-                    map.latLngToLayerPoint(d.LatLngObj).x +','+ 
-                    map.latLngToLayerPoint(d.LatLngObj).y +')';
-                });
-    }   
- 
+                        //console.log(d.LatLngObj);
+                        return 'translate(' +
+                            map.latLngToLayerPoint(d.LatLngObj).x + ',' +
+                            map.latLngToLayerPoint(d.LatLngObj).y + ')';
+                    });
+                }
+
             });
         });
-
-    
     </script>
 </body>
+
 </html>
