@@ -147,7 +147,9 @@
                         var lat = data.latitude;
                         var lng = data.longitude;
 
-                        map.setView([lat, lng], 17);
+                        marker = L.marker([lat, lng]).addTo(map);
+
+                        map.setView([lat, lng], 18);
                     });
             } else {
                 alert("あなたの端末では、現在位置を取得できません。");
