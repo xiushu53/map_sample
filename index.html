@@ -112,9 +112,18 @@
                     .attr({
                         'opacity': .7,
                         'fill': 'red',
-                        'r': 15
+                        'r': 13
                     })
                     .on('click', function(d) {
+                        d3.select(this).transition()
+                            .duration(400)
+                            .ease('elastic')
+                            .attr('r', 35)
+                            .transition()
+                            .duration(100)
+                            .ease('elastic')
+                            .attr('r', 13)
+
                         div.transition().duration(200)
                             .style('opacity', .9);
                         div.html('<b>' + d.name + '公園: </b>' + d.address);
