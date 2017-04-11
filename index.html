@@ -27,6 +27,15 @@
             width: 180px;
             height: 60px;
         }
+        
+        table {
+            border-collapse: collapse;
+        }
+        
+        td {
+            border: solid 1px;
+            padding: 0.5em;
+        }
     </style>
 
     <script>
@@ -126,7 +135,8 @@
 
                         div.transition().duration(200)
                             .style('opacity', .9);
-                        div.html('<b>' + d.name + '公園: </b>' + d.address);
+                        //div.html('<b>' + d.name + '公園: </b>' + d.address);
+                        div.html('<table><tr><td><b>' + d.name + '公園: </b></td><td>' + d.address + '</td></tr></table>');
                     });
 
 
@@ -165,7 +175,7 @@
             };
         };
     </script>
-    <input id="current_loc" type="button" value="現在地" onclick="setCenter();" /><br />
+    <input id="current_loc" type="button" value="現在地" onclick="setCenter();" style="14px" /><br />
 
 </body>
 
