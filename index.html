@@ -20,7 +20,7 @@
     <style>
         #map {
             width: 100%;
-            height: 60vh;
+            height: 70vh;
         }
         
         input#current_loc {
@@ -40,6 +40,10 @@
         #button {
             width: 29%;
             float: right;
+        }
+        
+        td {
+            font-size: 18px;
         }
     </style>
 
@@ -143,8 +147,8 @@
                             .style('opacity', .9);
                         //div.html('<b>' + d.name + '公園: </b>' + d.address);
                         div.html('<table><tr><td><b>' +
-                            d.name + '公園: </b></td><td rowspan="2"><img src="images/' +
-                            d.image + '.jpg" height="120px"/><td></tr><tr><td>' +
+                            d.name + '公園 </b></td><td rowspan="2"><img src="images/' +
+                            d.image + '.jpg" height="100vh"/><td></tr><tr><td>' +
                             d.address + '</td></tr></table>');
                     });
 
