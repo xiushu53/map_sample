@@ -43,7 +43,7 @@
         }
         
         td {
-            font-size: 18px;
+            font-size: 28px;
         }
     </style>
 
@@ -131,7 +131,7 @@
                     .attr({
                         'opacity': .7,
                         'fill': 'red',
-                        'r': 13
+                        'r': 16
                     })
                     .on('click', function(d) {
                         d3.select(this).transition()
@@ -141,14 +141,14 @@
                             .transition()
                             .duration(100)
                             .ease('elastic')
-                            .attr('r', 13)
+                            .attr('r', 16)
 
                         div.transition().duration(200)
                             .style('opacity', .9);
                         //div.html('<b>' + d.name + '公園: </b>' + d.address);
                         div.html('<table><tr><td><b>' +
                             d.name + '公園 </b></td><td rowspan="2"><img src="images/' +
-                            d.image + '.jpg" height="100vh"/><td></tr><tr><td>' +
+                            d.image + '.jpg" height="120vh"/><td></tr><tr><td>' +
                             d.address + '</td></tr></table>');
                     });
 
