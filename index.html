@@ -7,11 +7,14 @@
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@0.7/dist/leaflet.css" />
     <link rel="stylesheet" href="map_sample.css" />
+    <link rel="stylesheet" href="slide_in.css" />
+
 
 </head>
 
 
 <body>
+    <input type="checkbox" name="toggle" id="toggle" checked=false/>
 
     <h1> MAP SAMPLE</h1>
     <div id="map"></div>
@@ -22,18 +25,22 @@
     <script src="map_sample.js"></script>
 
     <div id="button">
-    <table>
-        <tr><td>
-            <input id="current_loc" type="button" value="現在地" onclick="setCenter();"/><br />
-        </td></tr>
-        <tr><td>
-            <a id="back" href="https://github.com/xiushu53/map_sample">戻る</a>
-        </td></tr>
-    </table>
+        <table>
+            <tr>
+                <td>
+                    <input id="current_loc" type="button" value="現在地" onclick="setCenter();" /><br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a id="back" href="https://github.com/xiushu53/map_sample">戻る</a>
+                </td>
+            </tr>
+        </table>
     </div>
 
     <div class="footer">
-        <p>Copyright © 2017     xiushu53 All Rights Reserved.     https://github.com/xiushu53/map_sample</p>
+        <p>Copyright © 2017 xiushu53 All Rights Reserved. https://github.com/xiushu53/map_sample</p>
     </div>
 
 </body>

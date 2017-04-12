@@ -14,6 +14,14 @@
             .style('float', 'left')
             .style('opacity', 0);
 
+        function checked() {
+            document.getElementById("toggle").checked = true;
+
+        };
+
+        document.getElementById("toggle").checked = false;
+
+
         d3.json('tOutline.json', function(error, collection) {
             if (error) throw error;
 
@@ -57,6 +65,8 @@
                         .on('click', function(d) {
                             div.transition().duration(500)
                                 .style('opacity', 0);
+                            document.getElementById("toggle").checked = false;
+
                         });
 
 
@@ -101,6 +111,8 @@
                             d.name + '公園 </b></td><td rowspan="2">' +
                             d.address + '</td></tr><tr><td><img id="tooltip_img" src="images/' +
                             d.image + '.jpg"/></td></tr></table>');
+
+                        checked();
                     });
 
 
