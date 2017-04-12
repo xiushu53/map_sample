@@ -76,7 +76,8 @@
             }
             #button {
                 margin-top: 0em;
-                width: 40%;
+                margin-right: 1em;
+                width: 50%;
                 float: right;
             }
             .footer {
