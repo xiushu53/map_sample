@@ -36,6 +36,8 @@
         
         td {
             font-size: 16px;
+            text-align: left;
+            vertical-align: top;
         }
         
         .footer {
@@ -61,7 +63,7 @@
             }
             input#current_loc {
                 width: 120px;
-                height: 60px;
+                height: 40px;
                 font-size: 21px;
             }
             #tooltip {

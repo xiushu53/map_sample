@@ -100,7 +100,7 @@
                         div.html('<table id="tooltip_table"><tr><td><b>' +
                             d.name + '公園 </b></td><td rowspan="2">' +
                             d.address + '</td></tr><tr><td><img id="tooltip_img" src="images/' +
-                            d.image + '.jpg"/></td></tr></table>' );
+                            d.image + '.jpg"/></td></tr></table>');
                     });
 
 
