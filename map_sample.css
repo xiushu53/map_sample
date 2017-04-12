@@ -53,7 +53,7 @@
                 /* 赤色 */
             }
             td {
-                font-size: 36px;
+                font-size: 24px;
             }
             .dots {
                 size: 150%;
@@ -61,7 +61,7 @@
             input#current_loc {
                 width: 180px;
                 height: 60px;
-                font-size: 28px;
+                font-size: 24px;
             }
             #tooltip {
                 width: 70%;
