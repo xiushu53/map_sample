@@ -73,4 +73,13 @@
                 width: 29%;
                 float: right;
             }
+            .footer {
+                width: 100%;
+                clear: left;
+                border-top: 1px solid #CCC;
+                text-align: center;
+                font-size: 10px;
+                margin-top: 10em;
+                padding: 0;
+            }
         }
