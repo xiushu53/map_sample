@@ -17,16 +17,16 @@
             width: 80%;
             float: left;
         }
-
+        
         #tooltip_table {
             margin-top: 1em;
         }
-
+        
         #tooltip_img {
             width: 70%;
             height: auto;
             max-height: 30vh;
-        } 
+        }
         
         #button {
             margin-top: 1em;
@@ -37,39 +37,39 @@
         td {
             font-size: 16px;
         }
-
+        
         .footer {
-            width:100%;
-            clear:left;
-            border-top: 1px solid #CCC ;        
-            text-align: center ;                
-            margin-top: 5em ;
-            padding: 0 ;
+            width: 100%;
+            clear: left;
+            border-top: 1px solid #CCC;
+            text-align: center;
+            margin-top: 5em;
+            padding: 0;
         }
-
-
-
-        @media screen and ( max-width:750px ) {
-
+        
+        @media screen and ( max-width:750px) {
             h1 {
-                color: #f00 ;   /* 赤色 */
+                color: #f00;
+                /* 赤色 */
             }
             td {
-                font-size : 36px;
+                font-size: 36px;
             }
             .dots {
                 size: 150%;
             }
-
             input#current_loc {
                 width: 180px;
                 height: 60px;
                 font-size: 28px;
             }
-
-            a#back {
-                text-align: end;
+            #tooltip {
+                width: 70%;
+                float: left;
             }
-
+            #button {
+                margin-top: 1em;
+                width: 29%;
+                float: right;
+            }
         }
-
