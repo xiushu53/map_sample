@@ -60,7 +60,7 @@
                 size: 150%;
             }
             input#current_loc {
-                width: 180px;
+                width: 120px;
                 height: 60px;
                 font-size: 21px;
             }
@@ -79,7 +79,7 @@
                 border-top: 1px solid #CCC;
                 text-align: center;
                 font-size: 10px;
-                margin-top: 10em;
+                margin-top: 13em;
                 padding: 0;
             }
         }
